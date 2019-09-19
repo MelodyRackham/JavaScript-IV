@@ -44,20 +44,20 @@ Prototype Refactor
 //NEW WAY WITH CLASSES//
 class GameObject {
   constructor(attributes) {
-    this.NewCreatedAt = attributes.createdAt;
-    this.NewName = attributes.name;
-    this.NewDimensions = attributes.dimensions;
+    this.createdAt = attributes.createdAt;
+    this.name = attributes.name;
+    this.dimensions = attributes.dimensions;
   }
 
   destroy() {
-    return `${this.NewName} was removed from the game.`;
+    return `${this.name} was removed from the game.`;
   }
 }
 
 class CharacterStats extends GameObject {
   constructor(CharAttributes) {
     super(CharAttributes);
-    this.NewHealthPoints = CharAttributes.healthPoints;
+    this.healthPoints = CharAttributes.healthPoints;
   }
   takeDamage() {
     return `${this.name} took damage.`;
@@ -67,9 +67,9 @@ class CharacterStats extends GameObject {
 class Humanoid extends CharacterStats {
   constructor(HumAttributes) {
     super(HumAttributes);
-    this.Newteam = HumAttributes.team;
-    this.NewWeapons = HumAttributes.weapons;
-    this.NewLanguage = HumAttributes.language;
+    this.team = HumAttributes.team;
+    this.weapons = HumAttributes.weapons;
+    this.language = HumAttributes.language;
   }
   greet() {
     return `${this.name} offers a greeting in ${this.language}`;
