@@ -20,10 +20,10 @@ class Instructor extends Person {
     this.catchPhrase = attributes.catchPhrase;
   }
   demo(subject) {
-    return `Today we are learning about ${this.subject}`;
+    return `Today we are learning about ${subject}`;
   }
   grade(student, subject) {
-    return `${student.name} receives a perfect score on ${this.subject}`;
+    return `${student.name} receives a perfect score on ${subject}`;
   }
 }
 
@@ -37,11 +37,11 @@ class Student extends Instructor {
   listsSubjects() {
     return `${this.favSubjects}`;
   }
-  PRAssignment(subject) {
-    return `${student.name} has submitted a PR for ${this.subject}`;
+  PRAssignment(student, subject) {
+    return `${student.name} has submitted a PR for ${subject}`;
   }
-  sprintChallenge() {
-    return `${student.name} has begun sprint challenge on ${this.subject}`;
+  sprintChallenge(student, subject) {
+    return `${student.name} has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -51,11 +51,11 @@ class ProjectManager extends Student {
     this.gradClassName = attributes.gradClassName;
     this.favInstructor = attributes.favInstructor;
   }
-  standUp(slackChannel) {
-    return `${this.name} announces to ${this.channel}, @channel standy times!`;
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
   }
-  debugsCode(student, subject) {
-    return `${this.name} debugs ${student.names}'s code on ${this.subject}`;
+  debugsCode(name, student, subject) {
+    return `${name} debugs ${student}'s code on ${subject}.`;
   }
 }
 
@@ -85,25 +85,97 @@ const Brit = new Instructor({
   name: 'Brit',
   age: 31,
   location: 'Canada',
-  previousBackground: 'ProgrammersForPeace',
+  specialty: 'Teaching',
   favLanguage: 'English',
   catchPhrase: 'Hello everyone how are we feeling today?',
 });
 
 const Goldie = new Instructor({
-    name: 'Goldie',
-    age: 40,
-    location: 'Montana',
-    previousBackground: 'EnglishDegree',
-    favLanguage: 'Sarcasm',
-    catchPhrase: 'Lets get started`,
-  });
+  name: 'Goldie',
+  age: 40,
+  location: 'Montana',
+  specialty: 'Big Books',
+  favLanguage: 'Sarcasm',
+  catchPhrase: 'Lets get started',
+});
 
-  const Rachel = new Instructor({
-    name: 'Rachel',
-    age: 36,
-    location: 'Florence',
-    previousBackground: 'College',
-    favLanguage: 'Spanish',
-    catchPhrase: 'Who wants to watch a movie?',
-  });
+const Rachel = new Instructor({
+  name: 'Rachel',
+  age: 36,
+  location: 'Florence',
+  specialty: 'Baking cakes',
+  favLanguage: 'Spanish',
+  catchPhrase: 'Who wants to watch a movie?',
+});
+
+//STUDENT//
+const Jasmine = new Student({
+  name: 'Jasmine',
+  age: 24,
+  location: 'New York',
+  previousBackground: 'Parrots',
+  className: 'LambdaWeb24',
+  favSubjects: 'Classes',
+});
+
+const Brad = new Student({
+  name: 'Brad',
+  age: 30,
+  location: 'North Carolina',
+  previousBackground: 'Traveling',
+  className: 'Web24',
+  favSubjects: 'HTML, CSS',
+});
+
+const Nate = new Student({
+  name: 'Nate',
+  age: 27,
+  location: 'Los Angeles',
+  previousBackground: 'Tech',
+  className: 'Lambda',
+  favSubjects: 'JavaScript',
+});
+
+//PROJECT MANAGER//
+
+const Justin = new ProjectManager({
+  name: 'Justin',
+  age: 28,
+  location: 'US',
+  specialty: 'Helping us',
+  favLanguage: 'English',
+  catchPhrase: 'Hows it going today guys?',
+  gradClassName: 'Web20',
+  favInstructor: 'Brit',
+});
+
+const Ashley = new ProjectManager({
+  name: 'Ashley',
+  age: 29,
+  location: 'Arizona',
+  specialty: 'Relationships',
+  favLanguage: 'Spanish',
+  catchPhrase: 'You know',
+  gradClassName: '2012',
+  favInstructor: 'Justin',
+});
+
+const Laurie = new ProjectManager({
+  name: 'Laurie',
+  age: 22,
+  location: 'Eagle Mountain',
+  specialty: 'Blogs',
+  favLanguage: 'English',
+  catchPhrase: 'I dont know',
+  gradClassName: '2015',
+  favInstructor: 'Miranda',
+});
+
+console.log(Josh.speak());
+console.log(Rachel.demo('Javascript'));
+console.log(Brit.grade(Jasmine, 'JavaScript'));
+console.log(Jasmine.listsSubjects());
+console.log(Nate.PRAssignment(Nate, 'Javascript'));
+console.log(Ashley.sprintChallenge(Laurie, 'HTML'));
+console.log(Ashley.standUp('Channel'));
+console.log(Laurie.debugsCode('Logan', 'Harrison', 'Javascript'));
